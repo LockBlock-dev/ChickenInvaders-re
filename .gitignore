@@ -1,3 +1,5 @@
 *.dat
 *_extracted
 extract-bmp.py
+*.exe
+*.bak
