@@ -4,6 +4,7 @@ This repository contains all my work on reverse engineering the [Chicken Invader
 -   [unpack.py](unpack.py) - python script to list and extract the game assets
 -   [patch.py](patch.py) - apply various patches to the game executable, available patches are:
     - windowed mode: force the game to run in windowed mode (prevents lags)
+    - restore window style: set the window style to an overlapped window (what you would expect from a standard windowed window)
 
 You can also check the cheat I made for this game: [Omelette](https://github.com/LockBlock-dev/omelette).
 
