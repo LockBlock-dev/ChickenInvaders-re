@@ -1,0 +1,26 @@
+//------------------------------------------------
+//--- 010 Editor v13.0.1 Binary Template
+//
+//      File: ChickenInvadersData.bt
+//   Authors: LockBlock-dev
+//   Version: 1.0.0
+//   Purpose: Parse data file
+//  Category: Misc
+// File Mask: *.data
+//   History: 
+//------------------------------------------------
+
+LittleEndian();
+
+struct AssetHeader {
+    char name[80] <bgcolor=cGray>;
+    unsigned int offset <format=hex, bgcolor=cGreen>;
+    unsigned int size <bgcolor=cBlue>;
+};
+
+struct Header {
+    unsigned int count <bgcolor=cRed>;
+    local int i;
+    for(i = 0; i < count; i++)
+        AssetHeader assetHeader;
+} header <open=true>;

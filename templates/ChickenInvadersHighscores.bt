@@ -1,0 +1,22 @@
+//------------------------------------------------
+//--- 010 Editor v13.0.1 Binary Template
+//
+//      File: ChickenInvadersHighscores.bt
+//   Authors: LockBlock-dev
+//   Version: 1.0.0
+//   Purpose: Parse highscores file
+//  Category: Misc
+// File Mask: *.hst
+//   History: 
+//------------------------------------------------
+
+LittleEndian();
+
+struct Highscore {
+    char username[16] <comment="Null-terminated", bgcolor=cGray>;
+    unsigned int score <bgcolor=cRed>;
+};
+
+while(!FEof()) {
+    Highscore highscore;
+}
