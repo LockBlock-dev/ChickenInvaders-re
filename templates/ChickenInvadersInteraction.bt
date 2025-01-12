@@ -1,0 +1,73 @@
+//------------------------------------------------
+//--- 010 Editor v13.0.1 Binary Template
+//
+//      File: ChickenInvadersInteraction.bt
+//   Authors: LockBlock-dev
+//   Version: 1.0.0
+//   Purpose: Parse interaction file
+//  Category: Game
+// File Mask: *.uan
+//   History: 
+//------------------------------------------------
+
+LittleEndian();
+
+struct InteractionHeader {
+    unsigned int width <bgcolor=cGreen>;
+    unsigned int height <bgcolor=cGreen>;
+    unsigned int framerate <bgcolor=cGreen>;
+} interactionHeader;
+
+struct InteractionFrame {
+    unsigned int frameType <bgcolor=cLtBlue, format=hex>;
+};
+
+struct Interaction {
+    unsigned int frameSize <bgcolor=cBlue>;
+    InteractionFrame frame;
+    char data[frameSize-sizeof(frame)] <bgcolor=cGray>;
+};
+
+struct SkippableInteraction {
+    unsigned int sleepTimeMs <bgcolor=cBlue>;
+};
+
+struct SfxInteraction {
+    char name[] <comment="Null-terminated/Max size of 20", bgcolor=cBlue>;
+    char data[256-Strlen(name)-1] <bgcolor=cGray>;
+};
+
+struct PlaySfxInteraction {
+    unsigned int index <bgcolor=cBlue>;
+    unsigned int data <bgcolor=cGray>;
+};
+
+struct StopSfxInteraction {
+    unsigned int index <bgcolor=cBlue>;
+};
+
+
+while(!FEof()) {
+    unsigned int interactionType <bgcolor=cRed>;
+
+    switch (interactionType) {
+        case 0:
+            // Animator finished
+            break;
+        case 1:
+            Interaction interaction;
+            break;
+        case 2:
+            SkippableInteraction skippableInteraction;
+            break;
+        case 3:
+            SfxInteraction sfxInteraction;
+            break;
+        case 4:
+            PlaySfxInteraction playSfxInteraction;
+            break;
+        case 5:
+            StopSfxInteraction stopSfxInteraction;
+            break;
+    }
+}
